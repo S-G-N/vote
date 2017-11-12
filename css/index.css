@@ -1,0 +1,447 @@
+@media screen and (min-width: 320px){
+    html{
+        font-size:5.33px;
+    }
+}
+@media screen and (min-width: 360px){
+    html{
+        font-size:6px;
+    }
+}
+@media screen and (min-width: 375px){
+    html{
+        font-size:6.25px;
+    }
+}
+@media screen and (min-width: 480px){
+    html{
+        font-size:8px;
+    }
+}
+@media screen and (min-width: 680px){
+    html{
+        font-size:11.33px;
+    }
+}
+@media screen and (min-width: 768px){
+    html{
+        font-size:12.8px;
+    }
+}
+@media screen and (min-width: 1024px){
+    html{
+        font-size:17px;
+    }
+}
+@media screen and (min-width: 1280px){
+    html{
+        font-size: 21.33px;
+    }
+}
+
+
+@media screen and (min-width: 1366px){
+    html{
+        font-size:23px;
+    }
+}
+
+@media screen and (min-width: 1920px){
+    html{
+        font-size:32px;
+    }
+}
+@media screen and (min-width: 3840px){
+    html{
+        font-size:64px;
+    }
+}
+
+
+*{
+    margin: 0;
+    padding:0;
+}
+ul,li{
+    list-style: none;
+}
+body{
+    background: #db8c8c;
+}
+.bannerImg{
+    width:100%;
+    height: 40rem;
+}
+
+/*  *********** header ******* */
+
+.header{
+    padding-left: 2rem;
+    padding-right:2rem;
+    padding-top: 2rem;
+}
+.header .timeWrapper{
+    width:100%;
+    height: 3rem;
+    background: #fff8c1;
+    font-size: 2.1rem;
+    text-align: center;
+}
+.header .timeWrapper .icon{
+    display: inline-block;
+    color: #a90fff;
+    width:2.5rem;
+    background: #000;
+    height: 2.5rem;
+    vertical-align: sub;
+}
+.header .timeWrapper .time{
+    display: inline-block;
+    height:2.5rem;
+    -webkit-border-radius:0.5rem;
+    -moz-border-radius:0.5rem;
+    border-radius: 0.5rem;
+    background: #ffcedf;
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+    color: #ff614e;
+}
+
+.header .timeWrapper .end{
+    background: none;
+    padding: 0;
+    margin-left: -0.4rem;
+    line-height: 2.5rem;
+}
+
+/*  *********** content ******* */
+
+.content{
+    padding: 4rem 2rem 10rem 2rem;
+    overflow: hidden;
+    position: relative;
+    color: #fff;
+}
+.contentMain{
+    /*display: none;*/
+}
+
+
+/* search bar */
+.content .searchWrapper{
+    height:6rem;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.content .searchWrapper .searchBar{
+    height: 6rem;
+    line-height:6rem;
+    font-size: 2.5rem;
+    -webkit-border-radius:1rem;
+    -moz-border-radius:1rem;
+    border-radius:1rem;
+}
+.content .searchWrapper .searchText{
+    display: inline-block;
+    width: 70%;
+    padding-left:1rem;
+    box-sizing: border-box;
+    border: 0.1rem solid #89919b;
+}
+.content .searchWrapper .searchBtn{
+    display: inline-block;
+    width: 25%;
+    float: right;
+    background: #393a9b;
+    text-align: center;
+}
+
+/* 全部参与 ***********************/
+.content .contestantWrapper{
+    width:100%;
+    height:auto;
+    margin-top:2rem;
+    overflow: hidden;
+}
+
+.content .contestantWrapper .contestant{
+    position: relative;
+    display: inline-block;
+    width:48%;
+    height: 35rem;
+    margin-bottom: 2rem;
+    -webkit-background-size:100% 100%;
+    background-size: 100% 100%;
+}
+
+.content .contestantWrapper .contestant .contestantPhoto{
+    width: 100%;
+    height: 100%;
+
+}
+
+.content .contestantWrapper .contestant .order{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    width: 6.5rem;
+    height: 4rem;
+    line-height: 4rem;
+    font-size: 3rem;
+    background: rgba(109, 109, 110, 0.4);
+    text-align: center;
+
+}
+
+.content .contestantWrapper .contestant .voteWrapper{
+    width: 100%;
+    height: 12rem;
+    position: absolute;
+    bottom: 0;
+    background-color: #393a9b;
+    color: #fff;
+}
+
+.content .contestantWrapper .contestant .orderNum{
+    display: inline-block;
+    position: absolute;
+    left:0;
+    top:0;
+    width: 100%;
+    height: 3.5rem;
+    line-height:3.5rem;
+    text-align: center;
+    color: #fff;
+    font-size: 2rem;
+}
+
+.content .contestantWrapper .contestant .orderNum .face{
+    display: inline-block;
+    width:2rem;
+    height: 2rem;
+    background: #000;
+    margin-right:0.2rem;
+    vertical-align: sub;
+}
+
+.content .contestantWrapper .contestant .voteBtn{
+    display: inline-block;
+    width: 70%;
+    height: 5rem;
+    line-height:5rem;
+    background-color: #fff;
+    -webkit-border-radius:1rem;
+    -moz-border-radius:1rem;
+    border-radius: 1rem;
+    font-size: 2rem;
+    text-align: center;
+    position: absolute;
+    left:50%;
+    margin-left:-35%;
+    top: 3.5rem;
+    color: #89919b;
+}
+
+.content .contestantWrapper .contestant .orderNum, .ballot{
+    display: inline-block;
+    position: absolute;
+    left:0;
+    top:0;
+    width: 100%;
+    height: 3.5rem;
+    line-height:3.5rem;
+    text-align: center;
+    color: #fff;
+    font-size: 2rem;
+}
+
+.content .contestantWrapper .contestant .voteBtn .star{
+    display: inline-block;
+    width:2rem;
+    height: 2rem;
+    background: #000;
+    margin-right:0.2rem;
+    vertical-align: sub;
+}
+
+.content .contestantWrapper .contestant:nth-child(2n-1){
+    float: left;
+}
+.content .contestantWrapper .contestant:nth-child(2n){
+    float: right;
+}
+
+.content .contestantWrapper .contestant .ballot{
+    top: auto;
+    bottom: 0;
+}
+
+/* 详情页 ***********************/
+.detailWrapper{
+    /*display: none;*/
+    padding-right: 2rem;
+    width:100%;
+}
+
+.content .detailWrapper .contestant{
+    width: 100%;
+    height: auto;
+    background-color: #393a9b;
+    position: relative;
+}
+.content .detailWrapper .contestant .title{
+    height: 7rem;
+    line-height: 7rem;
+    padding: 0 4%;
+    font-size: 2.5rem;
+}
+.content .detailWrapper .contestant img{
+    width: 92%;
+    height:80%;
+    margin-left:4%;
+    /*position: absolute;*/
+    /*top: 7rem;*/
+    /*left:50%;*/
+    /*margin-left:-46%;*/
+
+}
+.content .detailWrapper .contestant .info{
+    /*height: 7rem;*/
+    /*line-height: 7rem;*/
+    padding: 4%;
+    font-size: 2.5rem;
+    /*position: absolute;*/
+    /*bottom: 0;*/
+
+}
+
+.content .detailWrapper .detailVoteRapper{
+    width:100%;
+    overflow: hidden;
+    height: 16rem;
+}
+.content .detailWrapper .detailVoteRapper p{
+    height: 5rem;
+    text-align: center;
+    line-height: 5rem;
+    font-size: 2rem;
+}
+.content .detailWrapper .detailVoteRapper span{
+    display: block;
+    width: 20%;
+    height: 5rem;
+    -webkit-border-radius:1rem;
+    -moz-border-radius:1rem;
+    border-radius: 1rem;
+    background: #393a9b;
+    float: left;
+    margin-left:40%;
+}
+.content .detailWrapper .detailVoteRapper span:nth-child(2){
+    background: none;
+}
+
+    /* 排名*********************/
+.contentRanking{
+    display: none;
+}
+
+table {
+    width: 100%;
+    color: #363637;
+}
+
+table tr:nth-child(1){
+    color: #393a9b;
+}
+
+table tr:nth-child(2n-1){
+    background-color: #e6e6e7;
+}
+
+table tr:nth-child(2n){
+    background-color: #fff;
+}
+
+table td{
+    width:30%;
+    height: 6rem;
+    line-height: 6rem;
+    text-align: center;
+    border-bottom:1px solid #d4d4d5;
+    border-left:1px solid #d4d4d5;
+    font-size: 2rem;
+}
+table tr th, table tr td {
+    border-color:#d4d4d5;
+}
+
+td img{
+    display: inline-block;
+    width:2rem;
+    height: 2rem;
+    margin-right:0.2rem;
+    vertical-align: sub;
+
+}
+
+/* 规则*********************/
+.contentRule{
+    display: none;
+    font-size: 2rem;
+    color: #363637;
+}
+
+.contentRule .ruleWrapper{
+    width: 96%;
+    background-color: #fff;
+    padding: 2%;
+}
+.contentRule p{
+    text-indent: 2rem;
+    margin: 0 auto;
+}
+
+
+
+
+/* *********** tab ************/
+
+.tabWrapper{
+    width:100%;
+    height: 10rem;
+    position: fixed;
+    bottom: 0;
+
+}
+
+.tabWrapper li{
+    display: inline-block;
+    float: left;
+    width:33.333%;
+    line-height:10rem;
+    background: #ffc213;
+    color: #fff;
+    font-size: 2rem;
+    text-align: center;
+    box-sizing: border-box;
+    border-left: 0.2rem solid #fff0ff;
+
+}
+.tabWrapper li:nth-child(1){
+    border-left:none;
+}
+.tabWrapper li:active{
+    background: #393a9b ;
+}
+.tabWrapper li img{
+    display: inline-block;
+    width:2rem;
+    height: 2rem;
+    background: #000;
+    margin-right:0.2rem;
+    vertical-align: sub;
+}
+
