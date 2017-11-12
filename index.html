@@ -2,16 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!--<meta name=”viewport” content=”width=device-width, initial-scale=1″ />-->
     <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scalable=0" />
-    <!--<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1, maximum-scale=1">-->
     <link rel="stylesheet" href="./css/index.css">
-    <script src="./js/jquery-3.2.1.min.js"></script>
+    <script src="./js/jquery-3.2.1.min.js"></script><!--data-->
+    <script src="./js/request.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./js/template.js" type="text/javascript" charset="utf-8"></script>
     <script src="./js/index.js"></script>
     <title>Title</title>
 </head>
 <body>
 <!-- banner ---------------------->
+<div id="activity"></div>
+<script id="tep_activity" type="text/html">
+    <div>{{colorlist[0].linkcategoryid}}</div>
+</script>
 <img src="./images/banner.jpg" alt="" class="bannerImg">
 <!-- header ---------------------->
 <div class="header">
@@ -34,26 +38,49 @@
     </div>
     <!-- 全部参与 -->
     <ul class="contestantWrapper" id="contestantWrapper">
-        <li class="contestant contestantItem">
+        <!--<li class="contestant contestantItem">-->
+            <!--<img src="./images/dog.jpg" class="contestantPhoto" alt="">-->
+            <!--<span class="order">-->
+                <!--<i>1</i>号-->
+            <!--</span>-->
+            <!--<div class="voteWrapper">-->
+                <!--<span class="orderNum">-->
+                    <!--<img class="face" src="./images/dog.jpg"/>-->
+                    <!--<i>1</i>号-->
+                <!--</span>-->
+                <!--<span class="voteBtn" id="voteBtn">-->
+                    <!--<img src="./images/dog.jpg" alt="" class="star">-->
+                    <!--<i>投票</i>-->
+                <!--</span>-->
+                <!--<span class="ballot">-->
+                    <!--<i id="num">0</i>票-->
+                <!--</span>-->
+            <!--</div>-->
+        <!--</li>-->
+    </ul>
+    <script id="tep_contestantWrapper" type="text/html">
+        {{each item as value i}}
+        <li class="contestant contestantItem" data-id={{item}}>
             <img src="./images/dog.jpg" class="contestantPhoto" alt="">
             <span class="order">
-                <i>1</i>号
+                <i>{{item}}</i>号
             </span>
             <div class="voteWrapper">
                 <span class="orderNum">
                     <img class="face" src="./images/dog.jpg"/>
                     <i>1</i>号
                 </span>
-                <span class="voteBtn">
+                <span class="voteBtn" id="voteBtn">
                     <img src="./images/dog.jpg" alt="" class="star">
                     <i>投票</i>
                 </span>
                 <span class="ballot">
-                    <i>0</i>票
+                    <i id="num">0</i>票
                 </span>
             </div>
         </li>
-    </ul>
+        {{each}}
+    </script>
     <!-- 详情页 -->
     <div class="contestantWrapper detailWrapper" id="detailWrapper">
         <div class="contestant">
