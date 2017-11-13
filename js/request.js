@@ -58,9 +58,22 @@ var VOTEDdata = (function() {
             type: "POST",
             url: urlBase + url,
             data: param,
-            dataType: "text",
+            // dataType: "json",
             success: function(data, textStatus, jqXHR) {
-                done(data);
+                console.log(typeof (data));
+                console.log(data);
+                if(data&&data.msg){
+                    if(data.msg=="success"){
+                        done(data);
+                        return;
+                    }else{
+                        failure(data.code, data.msg);
+                        return;
+                    }
+                }else{
+                    done(data);
+                }
+
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 var errorCode = parseInt(jqXHR.responseText);
@@ -82,15 +95,15 @@ var VOTEDdata = (function() {
     /**
      * Get contestants data.
      */
-    var getContestants = function(done, failure) {
-        makeRequest(VOTE_URL_BASE, "query/json", {},done, failure);
+    var getContestants = function(id, done, failure) {
+        makeRequest(VOTE_URL_BASE, "query/json", id, done, failure);
     }
 
     /**
      * Get details of contestants.
      */
-    var getDetails = function(done, failure) {
-        makeRequest(VOTE_URL_BASE, "detail/{id}", {}, done, failure);
+    var getDetails = function(id, done, failure) {
+        makeRequest(VOTE_URL_BASE, "detail", id, done, failure);
     }
 
     /**
@@ -104,7 +117,7 @@ var VOTEDdata = (function() {
      * Give Vote.
      */
     var getGiveVote = function(id, done, failure) {
-        makeRequest(VOTE_URL_BASE, "giveVote/" + id, {},done, failure);
+        makeRequest(VOTE_URL_BASE, "giveVote", id, done, failure);
     }
 
     return {

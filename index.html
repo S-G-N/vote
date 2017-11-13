@@ -14,7 +14,6 @@
 <!-- banner ---------------------->
 <div id="activity"></div>
 <script id="tep_activity" type="text/html">
-    <div>{{colorlist[0].linkcategoryid}}</div>
 </script>
 <img src="./images/banner.jpg" alt="" class="bannerImg">
 <!-- header ---------------------->
@@ -34,213 +33,75 @@
 <div class="content contentMain" id="contentMain">
     <div class="searchWrapper">
         <input class="searchBar searchText" id="searchInput" placeholder="请输入选手的编号或姓名"/>
-        <div class="searchBar searchBtn" id="searchBtn">搜索</div>
+        <div class="searchBar searchBtn" id="searchBtn"><img class="face" src="./images/dog.jpg"/>搜索</div>
     </div>
     <!-- 全部参与 -->
     <ul class="contestantWrapper" id="contestantWrapper">
-        <!--<li class="contestant contestantItem">-->
-            <!--<img src="./images/dog.jpg" class="contestantPhoto" alt="">-->
-            <!--<span class="order">-->
-                <!--<i>1</i>号-->
-            <!--</span>-->
-            <!--<div class="voteWrapper">-->
-                <!--<span class="orderNum">-->
-                    <!--<img class="face" src="./images/dog.jpg"/>-->
-                    <!--<i>1</i>号-->
-                <!--</span>-->
-                <!--<span class="voteBtn" id="voteBtn">-->
-                    <!--<img src="./images/dog.jpg" alt="" class="star">-->
-                    <!--<i>投票</i>-->
-                <!--</span>-->
-                <!--<span class="ballot">-->
-                    <!--<i id="num">0</i>票-->
-                <!--</span>-->
-            <!--</div>-->
-        <!--</li>-->
     </ul>
     <script id="tep_contestantWrapper" type="text/html">
-        {{each item as value i}}
-        <li class="contestant contestantItem" data-id={{item}}>
-            <img src="./images/dog.jpg" class="contestantPhoto" alt="">
-            <span class="order">
-                <i>{{item}}</i>号
+        {{each list as value index}}
+        <li class="contestant contestantItem" data-id={{index}}>
+            <img src={{list[index].logoUrl}} class="contestantPhoto" data-id={{index}} alt="">
+            <span class="order" data-id={{index}}>
+                <i data-id={{index}}>{{list[index].id}}</i>号
             </span>
-            <div class="voteWrapper">
-                <span class="orderNum">
-                    <img class="face" src="./images/dog.jpg"/>
-                    <i>1</i>号
+            <div class="voteWrapper" data-id={{index}}>
+                <span class="orderNum" data-id={{index}}>
+                    <img class="face" src="./images/dog.jpg" data-id={{index}}/>
+                    <i data-id={{index}}>{{list[index].id}}</i>号
                 </span>
-                <span class="voteBtn" id="voteBtn">
-                    <img src="./images/dog.jpg" alt="" class="star">
-                    <i>投票</i>
+                <span class="voteBtn" data-id={{index}}>
+                    <img src="./images/dog.jpg" alt="" class="star" data-id={{index}}>
+                    <i data-id={{index}}>投票</i>
                 </span>
-                <span class="ballot">
-                    <i id="num">0</i>票
+                <span class="ballot" data-id={{index}}>
+                    <i id="num" data-id={{index}}>{{list[index].ticketCount}}</i>票
                 </span>
             </div>
         </li>
-        {{each}}
+        {{/each}}
     </script>
     <!-- 详情页 -->
     <div class="contestantWrapper detailWrapper" id="detailWrapper">
+    </div>
+    <script id="tep_detailWrapper" type="text/html">
         <div class="contestant">
             <div class="title">
-                <i>1</i>号
-                <i>张晓晓</i>
+                <i>{{data.members.id}}</i>号
+                <i>{{data.members.memberName}}</i>
             </div>
-            <img src="./images/banner.jpg" alt="">
-            <div class="info">
-                这是某某公司这是某某公司这是某某公司这是某某公司这是某某公司这是某某公司这是某某公司这是某某公司这是某某公司这是某某公司这是某某公司这是某这是某某公司这是某某公司这是某某公司这是某某公司这是某某公司这是某某公司这是某这是某某公司这是某某公司这是某某公司这是某某公司这是某某公司这是某某公司这是某某公司这是某某公司这是某某公司这是某某公司这是这是某某公司这是某某公司这是某某公司这是某某公司这是某某公司这是某某公司这是某某公司这是某某公司这是某某公司这是某某公司这是某公司这是某某公司这是某某公司这是某某公司这是某公司这是某某公司这是某某公司这是某某公司这是某某公司
-            </div>
+            <img src={{data.members.logoUrl}} alt="">
+            <div class="info">{{data.members.content}}</div>
         </div>
         <div class="detailVoteRapper">
-            <p><span>我要投票</span></p>
+            <p><span id="giveVote" data-id={{data.members.id}}>我要投票</span></p>
             <p>
-                票数<i>0</i>
+                票数<i id="ticketCount">{{data.members.ticketCount}}</i>
             </p>
         </div>
-    </div>
-
+    </script>
 </div>
 
 <!-- 排名  ----->
 <div class="content contentRanking" id="contentRanking">
+
+</div>
+<script id="tep_contentRanking" type="text/html">
     <table cellspacing="0" cellpadding="0">
         <tr>
             <td><img src="./images/dog.jpg" alt="">排名</td>
             <td><img src="./images/dog.jpg" alt="">姓名</td>
             <td><img src="./images/dog.jpg" alt="">票数</td>
         </tr>
+        {{each list as value index}}
         <tr>
-        <td>w</td>
-        <td>w</td>
-        <td>w</td>
-    </tr>
-        <tr>
-            <td>w</td>
-            <td>w</td>
-            <td>w</td>
+            <td>第{{index+1}}名</td>
+            <td>{{list[index].memberName}}</td>
+            <td>{{list[index].ticketCount}}</td>
         </tr>
-        <tr>
-            <td>w</td>
-            <td>w</td>
-            <td>w</td>
-        </tr>
-        <tr>
-            <td>w</td>
-            <td>w</td>
-            <td>w</td>
-        </tr>
-        <tr>
-            <td>w</td>
-            <td>w</td>
-            <td>w</td>
-        </tr>
-        <tr>
-            <td>w</td>
-            <td>w</td>
-            <td>w</td>
-        </tr>
-        <tr>
-            <td>w</td>
-            <td>w</td>
-            <td>w</td>
-        </tr>
-        <tr>
-            <td>w</td>
-            <td>w</td>
-            <td>w</td>
-        </tr>
-        <tr>
-            <td>w</td>
-            <td>w</td>
-            <td>w</td>
-        </tr>
-        <tr>
-            <td>w</td>
-            <td>w</td>
-            <td>w</td>
-        </tr>
-        <tr>
-            <td>w</td>
-            <td>w</td>
-            <td>w</td>
-        </tr>
-        <tr>
-            <td>w</td>
-            <td>w</td>
-            <td>w</td>
-        </tr>
-        <tr>
-            <td>w</td>
-            <td>w</td>
-            <td>w</td>
-        </tr>
-        <tr>
-            <td>w</td>
-            <td>w</td>
-            <td>w</td>
-        </tr>
-        <tr>
-            <td>w</td>
-            <td>w</td>
-            <td>w</td>
-        </tr>
-        <tr>
-            <td>w</td>
-            <td>w</td>
-            <td>w</td>
-        </tr>
-        <tr>
-            <td>w</td>
-            <td>w</td>
-            <td>w</td>
-        </tr>
-        <tr>
-            <td>w</td>
-            <td>w</td>
-            <td>w</td>
-        </tr>
-        <tr>
-            <td>w</td>
-            <td>w</td>
-            <td>w</td>
-        </tr>
-        <tr>
-            <td>w</td>
-            <td>w</td>
-            <td>w</td>
-        </tr>
-        <tr>
-            <td>w</td>
-            <td>w</td>
-            <td>w</td>
-        </tr>
-        <tr>
-            <td>w</td>
-            <td>w</td>
-            <td>w</td>
-        </tr>
-        <tr>
-            <td>w</td>
-            <td>w</td>
-            <td>w</td>
-        </tr>
-        <tr>
-            <td>w</td>
-            <td>w</td>
-            <td>w</td>
-        </tr>
-        <tr>
-            <td>w</td>
-            <td>w</td>
-            <td>d</td>
-        </tr>
-
-
+        {{/each}}
     </table>
-</div>
-
+</script>
 <!-- 活动规则  ----->
 <div class="content contentRule" id="contentRule">
     <div class="ruleWrapper">
@@ -316,5 +177,10 @@
     </li>
 
 </ul>
+
+<!-- tip ------------------------->
+<div class="tip" id="tip">
+错误提示
+</div>
 </body>
 </html>

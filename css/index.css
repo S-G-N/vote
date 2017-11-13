@@ -93,11 +93,12 @@ body{
     width:2.5rem;
     background: #000;
     height: 2.5rem;
-    vertical-align: sub;
+    vertical-align: middle;
 }
 .header .timeWrapper .time{
     display: inline-block;
     height:2.5rem;
+    line-height: 2.5rem;
     -webkit-border-radius:0.5rem;
     -moz-border-radius:0.5rem;
     border-radius: 0.5rem;
@@ -157,6 +158,14 @@ body{
     text-align: center;
 }
 
+.content .searchWrapper .searchBtn .face{
+    display: inline-block;
+    width:2rem;
+    height: 2rem;
+    background: #000;
+    margin-right:0.2rem;
+    vertical-align: middle;
+}
 /* 全部参与 ***********************/
 .content .contestantWrapper{
     width:100%;
@@ -186,7 +195,7 @@ body{
     top: 0;
     left: 0;
     display: inline-block;
-    width: 6.5rem;
+    width: 40%;
     height: 4rem;
     line-height: 4rem;
     font-size: 3rem;
@@ -223,7 +232,7 @@ body{
     height: 2rem;
     background: #000;
     margin-right:0.2rem;
-    vertical-align: sub;
+    vertical-align: middle;
 }
 
 .content .contestantWrapper .contestant .voteBtn{
@@ -263,7 +272,7 @@ body{
     height: 2rem;
     background: #000;
     margin-right:0.2rem;
-    vertical-align: sub;
+    vertical-align: middle;
 }
 
 .content .contestantWrapper .contestant:nth-child(2n-1){
@@ -346,6 +355,7 @@ body{
     /* 排名*********************/
 .contentRanking{
     display: none;
+    padding-bottom: 12rem;
 }
 
 table {
@@ -367,8 +377,8 @@ table tr:nth-child(2n){
 
 table td{
     width:30%;
-    height: 6rem;
-    line-height: 6rem;
+    height: 5rem;
+    padding:2%;
     text-align: center;
     border-bottom:1px solid #d4d4d5;
     border-left:1px solid #d4d4d5;
@@ -383,7 +393,7 @@ td img{
     width:2rem;
     height: 2rem;
     margin-right:0.2rem;
-    vertical-align: sub;
+    vertical-align: middle;
 
 }
 
@@ -442,6 +452,26 @@ td img{
     height: 2rem;
     background: #000;
     margin-right:0.2rem;
-    vertical-align: sub;
+    vertical-align: middle;
 }
 
+.tip{
+    display: none;
+    position: fixed;
+    width: 70%;
+    height: 4rem;
+    line-height: 3rem;
+    box-sizing: border-box;
+    left: 50%;
+    top: 18rem;
+    margin-left: -35%;
+    padding:0.5rem;
+    border: 1px solid #e6e6e7;
+    color: #252525;
+    background: #fff;
+    text-align: center;
+    font-size: 2rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    border-radius: 1rem;
+}
