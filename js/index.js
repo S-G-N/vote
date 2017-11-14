@@ -44,7 +44,8 @@ $(function () {
         var condition = $("#searchInput").val();
         if (condition) {
             // 调用搜索接口
-            Vote.getContestants(condition, getContestantsDone, getContestantsFailure)
+            var params={"id":condition}
+            Vote.getContestants(params, getContestantsDone, getContestantsFailure)
         }else{
             showTip("请输入id")
         }

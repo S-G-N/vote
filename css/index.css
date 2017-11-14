@@ -83,7 +83,6 @@ body{
 .header .timeWrapper{
     width:100%;
     height: 3rem;
-    background: #fff8c1;
     font-size: 2.1rem;
     text-align: center;
 }
@@ -99,6 +98,7 @@ body{
     display: inline-block;
     height:2.5rem;
     line-height: 2.5rem;
+    margin-left: -0.5rem;
     -webkit-border-radius:0.5rem;
     -moz-border-radius:0.5rem;
     border-radius: 0.5rem;
@@ -424,7 +424,6 @@ td img{
     height: 10rem;
     position: fixed;
     bottom: 0;
-
 }
 
 .tabWrapper li{
@@ -442,9 +441,7 @@ td img{
 }
 .tabWrapper li:nth-child(1){
     border-left:none;
-}
-.tabWrapper li:active{
-    background: #393a9b ;
+    background: #393a9b;
 }
 .tabWrapper li img{
     display: inline-block;

@@ -95,8 +95,8 @@ var VOTEDdata = (function() {
     /**
      * Get contestants data.
      */
-    var getContestants = function(id, done, failure) {
-        makeRequest(VOTE_URL_BASE, "query/json", id, done, failure);
+    var getContestants = function(params, done, failure) {
+        makeRequest(VOTE_URL_BASE, "query/json", params, done, failure);
     }
 
     /**
