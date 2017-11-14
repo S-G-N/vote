@@ -56,13 +56,10 @@ $(function () {
         // 参数id
         logi("进入详情")
         var id = $(e.target).data("id");
-        console.log($(e.target))
-        console.log($(e.target))
-        console.log($(e.target))
-        console.log($(e.target))
         logd("ID=" + id);
+        var params={"id":id}
         // 调用详情接口
-        Vote.getDetails(id, getDetailsDone, getDetailsFailure)
+        Vote.getDetails(params, getDetailsDone, getDetailsFailure)
     })
 
 
@@ -141,7 +138,8 @@ $(function () {
         showTip("投票成功！");
         // 刷新数据
         var id = $("#ticketCount").data("id")
-        Vote.getDetails(id, getDetailsDone, getDetailsFailure)
+        var params={"id":id}
+        Vote.getDetails(params, getDetailsDone, getDetailsFailure)
     }
 
     function getGiveVoteFailure(err, errMsg) {

@@ -102,8 +102,8 @@ var VOTEDdata = (function() {
     /**
      * Get details of contestants.
      */
-    var getDetails = function(id, done, failure) {
-        makeRequest(VOTE_URL_BASE, "detail", id, done, failure);
+    var getDetails = function(params, done, failure) {
+        makeRequest(VOTE_URL_BASE, "detail", params, done, failure);
     }
 
     /**
