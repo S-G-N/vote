@@ -9,8 +9,8 @@
 // var VOTEDdata_ERROR_UNKNOWN = -1;
 
 
+// var VOTE_URL_BASE = "http://111.200.54.178:8999/vote/vote1/";
 var VOTE_URL_BASE = "http://192.168.20.203:5555/";
-// var VOTE_URL_BASE = "http://192.168.20.203:5555/vote";
 
 
 /* public information */
@@ -32,7 +32,6 @@ var VOTEDdata = (function() {
     var VoteInstance;
 
     function createInstance() {
-        init();
         logi("VOTEDdata instance created.");
 
         return {
@@ -44,13 +43,6 @@ var VOTEDdata = (function() {
         };
     }
 
-    var init = function() {
-        // var normalDataVer = getUserData(KEY_NORMAL_DATA_VERSION);
-        // if (!normalDataVer || normalDataVer < NORMAL_DATA_VERSION) {
-        //     removeNormalData();
-        //     setUserData(KEY_NORMAL_DATA_VERSION, NORMAL_DATA_VERSION);
-        // }
-    }
 
     var makeRequest = function(urlBase, url, param, done, failure) {
         logd("MakeRequest: url=" + urlBase + url + ", param=" + JSON.stringify(param));
@@ -58,10 +50,17 @@ var VOTEDdata = (function() {
             type: "POST",
             url: urlBase + url,
             data: param,
-            // dataType: "json",
+            // dataType: "jsonp",
             success: function(data, textStatus, jqXHR) {
-                console.log(typeof (data));
                 console.log(data);
+                try{
+                    data = JSON.parse(data);
+                }catch(e) {
+                    console.log(e);
+                    console.log(typeof data);
+                }
+                console.log(data);
+                console.log(typeof data);
                 if(data&&data.msg){
                     if(data.msg=="success"){
                         done(data);

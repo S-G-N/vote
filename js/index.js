@@ -3,6 +3,15 @@
  */
 
 $(function () {
+    var h=$(window).height();
+    $(window).resize(function() {
+        if($(window).height()<h){
+            $('.tabWrapper').hide();
+        }
+        if($(window).height()>=h){
+            $('.tabWrapper').show();
+        }
+    });
     Vote.getActivity(getActivityDone, getActivityFailure)
     Vote.getContestants(null, getContestantsDone, getContestantsFailure)
 
@@ -65,9 +74,9 @@ $(function () {
 
     // 点击投票 调用投票接口
     $('#detailWrapper').on("click", "#giveVote", function(e){
-        console.log("点击投票")
+        logd("点击投票")
         var id = $(e.target).data("id");
-        console.log("Id="+id);
+        logd("Id="+id);
         Vote.getGiveVote(id, getGiveVoteDone, getGiveVoteFailure)
     })
     /* ******************callback function*********************** */
@@ -75,6 +84,18 @@ $(function () {
     function getActivityDone(data) {
         logd('getActivity success');
         logd('Activity Data:');
+        console.log(data)
+        console.log(typeof data)
+        console.log(data.data.manage.endTime)
+        var date =new Date(data.data.manage.endTime);
+        data.y = date.getFullYear();
+        data.M = date.getMonth() + 1;
+        data.d = date.getDate();
+        data.h = date.getHours();
+        data.m = date.getMinutes();
+        data.s = date.getSeconds();
+        console.log(data.data.manage.content)
+        $("#activityContent").html(data.data.manage.content)
         var html = template('tep_activity', data);
         document.getElementById('activity').innerHTML = html;
     }
@@ -104,9 +125,9 @@ $(function () {
         $("#contestantWrapper").hide();
         $("#detailWrapper").show();
         logd('getDetails success');
-        console.log("数据刷新了")
+        logd("数据刷新了")
         // 渲染详情页数据
-        console.log(data)
+        logd(data)
         var html = template('tep_detailWrapper', data);
         document.getElementById('detailWrapper').innerHTML = html;
     }
@@ -132,7 +153,7 @@ $(function () {
 
     /* getGiveVote */
     function getGiveVoteDone(data) {
-        console.log("投票成功")
+        logd("投票成功")
         logd('getGiveVote success');
         logd('getGiveVote Data:' + JSON.stringify(data));
         showTip("投票成功！");

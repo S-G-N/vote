@@ -3,31 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scalable=0" />
+    <meta name="keywords" content="中国支付网,支付圈,投票" />
+    <meta name="description" content="中国支付网投票">
     <link rel="stylesheet" href="./css/index.css">
     <script src="./js/jquery-3.2.1.min.js"></script><!--data-->
     <script src="./js/request.js" type="text/javascript" charset="utf-8"></script>
     <script src="./js/template.js" type="text/javascript" charset="utf-8"></script>
     <script src="./js/index.js"></script>
-    <title>Vote By Elaine</title>
+    <title>中国支付网投票</title>
 </head>
 <body>
 <!-- banner ---------------------->
-<div id="activity"></div>
-<script id="tep_activity" type="text/html">
-</script>
 <img src="./images/banner.jpg" alt="" class="bannerImg">
 <!-- header ---------------------->
-<div class="header">
-    <div class="timeWrapper">
+<div class="header" >
+    <div class="timeWrapper" id="activity"></div>
+    <script id="tep_activity" type="text/html">
         <div class="icon"></div>活动于
-        <div class="time">2017</div>年
-        <div class="time">12</div>月
-        <div class="time">01</div>日
-        <div class="time">00</div>时
-        <div class="time">00</div>分
-        <div class="time">00</div>秒
+        <div class="time">{{y}}</div>年
+        <div class="time">{{M}}</div>月
+        <div class="time">{{d}}</div>日
+        <div class="time">{{h}}</div>时
+        <div class="time">{{m}}</div>分
+        <div class="time">{{s}}</div>秒
         <div class="time end">结束</div>
-    </div>
+    </script>
 </div>
 <!-- content --------------------->
 <div class="content contentMain" id="contentMain">
@@ -40,22 +40,22 @@
     </ul>
     <script id="tep_contestantWrapper" type="text/html">
         {{each list as value index}}
-        <li class="contestant contestantItem" data-id={{index}}>
-            <img src={{list[index].logoUrl}} class="contestantPhoto" data-id={{index}} alt="">
-            <span class="order" data-id={{index}}>
-                <i data-id={{index}}>{{list[index].id}}</i>号
+        <li class="contestant contestantItem" data-id={{list[index].id}}>
+            <img src={{list[index].showLogo}} class="contestantPhoto" data-id={{list[index].id}} alt="">
+            <span class="order" data-id={{list[index].id}}>
+                <i data-id={{list[index].id}}>{{list[index].memberNo}}</i>号
             </span>
-            <div class="voteWrapper" data-id={{index}}>
-                <span class="orderNum" data-id={{index}}>
-                    <img class="face" src="./images/dog.jpg" data-id={{index}}/>
-                    <i data-id={{index}}>{{list[index].id}}</i>号
+            <div class="voteWrapper" data-id={{list[index].id}}>
+                <span class="orderNum" data-id={{list[index].id}}>
+                    <img class="face" src="./images/dog.jpg" data-id={{list[index].id}}/>
+                    <i data-id={{list[index].id}}>{{list[index].memberNo}}</i>号
                 </span>
-                <span class="voteBtn" data-id={{index}}>
-                    <img src="./images/dog.jpg" alt="" class="star" data-id={{index}}>
-                    <i data-id={{index}}>投票</i>
+                <span class="voteBtn" data-id={{list[index].id}}>
+                    <img src="./images/dog.jpg" alt="" class="star" data-id={{list[index].id}}>
+                    <i data-id={{list[index].id}}>投票</i>
                 </span>
-                <span class="ballot" data-id={{index}}>
-                    <i id="num" data-id={{index}}>{{list[index].ticketCount}}</i>票
+                <span class="ballot" data-id={{list[index].id}}>
+                    <i id="num" data-id={{list[index].id}}>{{list[index].ticketCount}}</i>票
                 </span>
             </div>
         </li>
@@ -67,10 +67,10 @@
     <script id="tep_detailWrapper" type="text/html">
         <div class="contestant">
             <div class="title">
-                <i>{{data.members.id}}</i>号
-                <i>{{data.members.memberName}}</i>
+                <i>{{data.members.memberNo}}</i>号
+                <i>{{data.members.title}}</i>
             </div>
-            <img src={{data.members.logoUrl}} alt="">
+            <img src={{data.members.showLogo}} alt="">
             <div class="info">{{data.members.content}}</div>
         </div>
         <div class="detailVoteRapper">
@@ -96,7 +96,7 @@
         {{each list as value index}}
         <tr>
             <td>第{{index+1}}名</td>
-            <td>{{list[index].memberName}}</td>
+            <td>{{list[index].title}}</td>
             <td>{{list[index].ticketCount}}</td>
         </tr>
         {{/each}}
@@ -104,60 +104,12 @@
 </script>
 <!-- 活动规则  ----->
 <div class="content contentRule" id="contentRule">
-    <div class="ruleWrapper">
-        [微信投票规则]<br>
+    <div class="ruleWrapper" id="activityContent">
+        <!--[微信投票规则]<br>-->
 
-        　　<br><p>1.扫描下方的二维码，关注“浙江省体育产业领军人物”微信公众号。</p>
+        <!--　　<br><p>1.扫描下方的二维码，关注“浙江省体育产业领军人物”微信公众号。</p>-->
 
-        　　<br><p>2.点击“人物评选”一栏，弹出投票页面。</p>
-        　　<br><p>2.点击“人物评选”一栏，弹出投票页面。</p>
-        　　<br><p>2.点击“人物评选”一栏，弹出投票页面。</p>
-        　　<br><p>2.点击“人物评选”一栏，弹出投票页面。</p>
-        　　<br><p>2.点击“人物评选”一栏，弹出投票页面。</p>
-        　　<br><p>2.点击“人物评选”一栏，弹出投票页面。</p>
-        　　<br><p>2.点击“人物评选”一栏，弹出投票页面。</p>
-        　　<br><p>2.点击“人物评选”一栏，弹出投票页面。</p>
-        　　<br><p>2.点击“人物评选”一栏，弹出投票页面。</p>
-        　　<br><p>2.点击“人物评选”一栏，弹出投票页面。</p>
-        　　<br><p>2.点击“人物评选”一栏，弹出投票页面。</p>
-        　　<br><p>2.点击“人物评选”一栏，弹出投票页面。</p>
-        　　<br><p>2.点击“人物评选”一栏，弹出投票页面。</p>
-        　　<br><p>2.点击“人物评选”一栏，弹出投票页面。</p>
-        　　<br><p>2.点击“人物评选”一栏，弹出投票页面。</p>
-        　　<br><p>2.点击“人物评选”一栏，弹出投票页面。</p>
-        　　<br><p>2.点击“人物评选”一栏，弹出投票页面。</p>
-        　　<br><p>2.点击“人物评选”一栏，弹出投票页面。</p>
-        　　<br><p>2.点击“人物评选”一栏，弹出投票页面。</p>
-        　　<br><p>2.点击“人物评选”一栏，弹出投票页面。</p>
-        　　<br><p>2.点击“人物评选”一栏，弹出投票页面。</p>
-        　　<br><p>2.点击“人物评选”一栏，弹出投票页面。</p>
-        　　<br><p>2.点击“人物评选”一栏，弹出投票页面。</p>
-        　　<br><p>2.点击“人物评选”一栏，弹出投票页面。</p>
-        　　<br><p>2.点击“人物评选”一栏，弹出投票页面。</p>
-        　　<br><p>2.点击“人物评选”一栏，弹出投票页面。</p>
-        　　<br><p>2.点击“人物评选”一栏，弹出投票页面。</p>
-        　　<br><p>2.点击“人物评选”一栏，弹出投票页面。</p>
-        　　<br><p>2.点击“人物评选”一栏，弹出投票页面。</p>
-        　　<br><p>2.点击“人物评选”一栏，弹出投票页面。</p>
-        　　<br><p>2.点击“人物评选”一栏，弹出投票页面。</p>
-        　　<br><p>2.点击“人物评选”一栏，弹出投票页面。</p>
-        　　<br><p>2.点击“人物评选”一栏，弹出投票页面。</p>
-        　　<br><p>2.点击“人物评选”一栏，弹出投票页面。</p>
-        　　<br><p>2.点击“人物评选”一栏，弹出投票页面。</p>
-        　　<br><p>2.点击“人物评选”一栏，弹出投票页面。</p>
-        　　<br><p>2.点击“人物评选”一栏，弹出投票页面。</p>
-        　　<br><p>2.点击“人物评选”一栏，弹出投票页面。</p>
-        　　<br><p>2.点击“人物评选”一栏，弹出投票页面。</p>
-        　　<br><p>2.点击“人物评选”一栏，弹出投票页面。</p>
-        　　<br><p>2.点击“人物评选”一栏，弹出投票页面。</p>
-        　　<br><p>2.点击“人物评选”一栏，弹出投票页面。</p>
-        　　<br><p>2.点击“人物评选”一栏，弹出投票页面。</p>
-        　　<br><p>2.点击“人物评选”一栏，弹出投票页面。</p>
-        　　<br><p>2.点击“人物评选”一栏，弹出投票页面。</p>
-        　　<br><p>2.点击“人物评选”一栏，弹出投票页面。</p>
-        　　<br><p>2.点击“人物评选”一栏，弹出投票页面。</p>
-        　　<br><p>2.点击“人物评选”一栏，弹出投票页面。</p>
-        　　<br><p>6.点击“人物评选”一栏，弹出投票页面。</p>
+        <!--　　<br><p>2.点击“人物评选”一栏，弹出投票页面。</p>-->
     </div>
 
     　　
