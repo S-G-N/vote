@@ -308,21 +308,13 @@ body{
 }
 .content .detailWrapper .contestant img{
     width: 92%;
-    height:80%;
+    height:40rem;
     margin-left:4%;
-    /*position: absolute;*/
-    /*top: 7rem;*/
-    /*left:50%;*/
-    /*margin-left:-46%;*/
 
 }
 .content .detailWrapper .contestant .info{
-    /*height: 7rem;*/
-    /*line-height: 7rem;*/
     padding: 4%;
     font-size: 2.5rem;
-    /*position: absolute;*/
-    /*bottom: 0;*/
 
 }
 

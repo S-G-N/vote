@@ -3,6 +3,7 @@
  */
 
 $(function () {
+    var isSearch = false;
     var h=$(window).height();
     $(window).resize(function() {
         if($(window).height()<h){
@@ -60,46 +61,48 @@ $(function () {
         }
     })
 
-    // 点击进详情
+    // 点击首页Item
     $("#contestantWrapper").on("click", "li", function(e){
         // 参数id
-        logi("进入详情")
         var id = $(e.target).data("id");
-        console.log("点击首页投票按钮")
         logd("ID=" + id);
         var params={"id":id}
-
-        if($(e.target).hasClass("voteBtn")){
+        console.log(e.target)
+        if($(e.target).hasClass('voteBtnItem')){
+            console.log("点击首页投票按钮")
+            console.log(e.target)
             // 直接投票
             // 调用投票接口
             Vote.getGiveVote(params, getGiveVoteDone, getGiveVoteFailure)
             //刷新数据
-            Vote.getContestants(null, getContestantsDone, getContestantsFailure)
+            // Vote.getContestants(null, getContestantsDone, getContestantsFailure)
         }else{
             // 进入详情
+            console.log("点击首页图片")
+            logi("进入详情")
             Vote.getDetails(params, getDetailsDone, getDetailsFailure)
         }
-
-
-
-        // 调用详情接口
-
     })
-
-    // 点击首页投票按钮
-    // $(".voteBtn").on("click",function(e){
-    //     e.stopPropagation();、
-    //     // 参数id
+    // 点击搜索结果投票
+    // $("#detailWrapper").on("click", "li", function(e){
+    //     logi("进入详情")
     //     var id = $(e.target).data("id");
-    //     console.log("点击首页投票按钮")
+    //     console.log("点击首页图片")
     //     logd("ID=" + id);
-    //     var params={"id":id};
-    //     // 调用投票接口
-    //     Vote.getGiveVote(params, getGiveVoteDone, getGiveVoteFailure)
-    //     //刷新数据
-    //     Vote.getDetails(params, getDetailsDone, getDetailsFailure)
+    //     var params={"id":id}
+    //     console.log(e.target)
+    //     if($(e.target).hasClass('voteBtnItem')){
+    //         console.log(e.target)
+    //         // 直接投票
+    //         // 调用投票接口
+    //         Vote.getGiveVote(params, getGiveVoteDone, getGiveVoteFailure)
+    //         //刷新数据
+    //         Vote.getContestants(null, getContestantsDone, getContestantsFailure)
+    //     }else{
+    //         // 进入详情
+    //         Vote.getDetails(params, getDetailsDone, getDetailsFailure)
+    //     }
     // })
-
     // 点击详情页投票
     $('#detailWrapper').on("click", "#giveVote", function(e){
         logd("点击投票")
@@ -136,10 +139,12 @@ $(function () {
 
     /* getContestants */
     function getContestantsDone(data) {
+        // num:1表示搜索结果 0 表示全部结果
+        isSearch = data.num=="搜索结果"?true :false;
         logd('getContestants success');
         $("#contestantWrapper").show();
         $("#detailWrapper").hide();
-        var nowData = {"list": data};
+        var nowData = {"list": data.data.membersList};
         var html = template('tep_contestantWrapper', nowData);
         document.getElementById('contestantWrapper').innerHTML = html;
     }
@@ -185,14 +190,30 @@ $(function () {
         logd("投票成功")
         logd('getGiveVote success');
         logd('getGiveVote Data:' + JSON.stringify(data));
-        showTip("投票成功！");
         if(data.code=='000000'){
+            showTip(data.data.text);
             //成功// 刷新数据
-            var id = $("#ticketCount").data("id")
+            var id = $("#giveVote").data("id")
             var params={"id":id}
+            console.log(params)
+            /* *
+            *判断刷新哪部分数据
+            * 首页
+            * 搜索结果
+            * 详情页
+            * */
+            if(!isSearch){
+                Vote.getContestants(null, getContestantsDone, getContestantsFailure)
+            }else{
+                Vote.getContestants({"condition":id}, getContestantsDone, getContestantsFailure)
+            }
+
             Vote.getDetails(params, getDetailsDone, getDetailsFailure)
         }else if(data.code=='000001'){
             //已经投过
+            showTip(data.data.text);
+        }else if(data.code=='000002'){
+            //没有投票选手
             showTip(data.data.text);
         }
     }

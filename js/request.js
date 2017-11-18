@@ -10,7 +10,7 @@
 
 
 // var VOTE_URL_BASE = "http://111.200.54.178:8999/vote/vote1/";
-var VOTE_URL_BASE = "http://192.168.31.114:5555/";
+var VOTE_URL_BASE = "http://192.168.20.203:5555/";
 
 
 /* public information */
@@ -95,7 +95,7 @@ var VOTEDdata = (function() {
      * Get contestants data.
      */
     var getContestants = function(params, done, failure) {
-        makeRequest(VOTE_URL_BASE, "query/json", params, done, failure);
+        makeRequest(VOTE_URL_BASE, "membersList", params, done, failure);
     }
 
     /**
