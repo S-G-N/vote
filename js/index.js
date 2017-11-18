@@ -53,7 +53,7 @@ $(function () {
         var condition = $("#searchInput").val();
         if (condition) {
             // 调用搜索接口
-            var params={"id":condition}
+            var params={"condition":condition}
             Vote.getContestants(params, getContestantsDone, getContestantsFailure)
         }else{
             showTip("请输入id")
@@ -65,19 +65,48 @@ $(function () {
         // 参数id
         logi("进入详情")
         var id = $(e.target).data("id");
+        console.log("点击首页投票按钮")
         logd("ID=" + id);
         var params={"id":id}
+
+        if($(e.target).hasClass("voteBtn")){
+            // 直接投票
+            // 调用投票接口
+            Vote.getGiveVote(params, getGiveVoteDone, getGiveVoteFailure)
+            //刷新数据
+            Vote.getContestants(null, getContestantsDone, getContestantsFailure)
+        }else{
+            // 进入详情
+            Vote.getDetails(params, getDetailsDone, getDetailsFailure)
+        }
+
+
+
         // 调用详情接口
-        Vote.getDetails(params, getDetailsDone, getDetailsFailure)
+
     })
 
+    // 点击首页投票按钮
+    // $(".voteBtn").on("click",function(e){
+    //     e.stopPropagation();、
+    //     // 参数id
+    //     var id = $(e.target).data("id");
+    //     console.log("点击首页投票按钮")
+    //     logd("ID=" + id);
+    //     var params={"id":id};
+    //     // 调用投票接口
+    //     Vote.getGiveVote(params, getGiveVoteDone, getGiveVoteFailure)
+    //     //刷新数据
+    //     Vote.getDetails(params, getDetailsDone, getDetailsFailure)
+    // })
 
-    // 点击投票 调用投票接口
+    // 点击详情页投票
     $('#detailWrapper').on("click", "#giveVote", function(e){
         logd("点击投票")
         var id = $(e.target).data("id");
         logd("Id="+id);
-        Vote.getGiveVote(id, getGiveVoteDone, getGiveVoteFailure)
+        var params={"id":id};
+        Vote.getGiveVote(params, getGiveVoteDone, getGiveVoteFailure)
     })
     /* ******************callback function*********************** */
     /* getActivity */
@@ -157,15 +186,20 @@ $(function () {
         logd('getGiveVote success');
         logd('getGiveVote Data:' + JSON.stringify(data));
         showTip("投票成功！");
-        // 刷新数据
-        var id = $("#ticketCount").data("id")
-        var params={"id":id}
-        Vote.getDetails(params, getDetailsDone, getDetailsFailure)
+        if(data.code=='000000'){
+            //成功// 刷新数据
+            var id = $("#ticketCount").data("id")
+            var params={"id":id}
+            Vote.getDetails(params, getDetailsDone, getDetailsFailure)
+        }else if(data.code=='000001'){
+            //已经投过
+            showTip(data.data.text);
+        }
     }
 
     function getGiveVoteFailure(err, errMsg) {
         loge('getGiveVote fail' + err);
-        showTip("投票失败 " + errMsg);
+        showTip(errMsg);
     }
 
 
@@ -176,4 +210,4 @@ $(function () {
             tip.text("").hide();
         },1000)
     }
-});
+})
