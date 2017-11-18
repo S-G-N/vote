@@ -83,33 +83,13 @@ $(function () {
             Vote.getDetails(params, getDetailsDone, getDetailsFailure)
         }
     })
-    // 点击搜索结果投票
-    // $("#detailWrapper").on("click", "li", function(e){
-    //     logi("进入详情")
-    //     var id = $(e.target).data("id");
-    //     console.log("点击首页图片")
-    //     logd("ID=" + id);
-    //     var params={"id":id}
-    //     console.log(e.target)
-    //     if($(e.target).hasClass('voteBtnItem')){
-    //         console.log(e.target)
-    //         // 直接投票
-    //         // 调用投票接口
-    //         Vote.getGiveVote(params, getGiveVoteDone, getGiveVoteFailure)
-    //         //刷新数据
-    //         Vote.getContestants(null, getContestantsDone, getContestantsFailure)
-    //     }else{
-    //         // 进入详情
-    //         Vote.getDetails(params, getDetailsDone, getDetailsFailure)
-    //     }
-    // })
     // 点击详情页投票
     $('#detailWrapper').on("click", "#giveVote", function(e){
         logd("点击投票")
         var id = $(e.target).data("id");
         logd("Id="+id);
         var params={"id":id};
-        Vote.getGiveVote(params, getGiveVoteDone, getGiveVoteFailure)
+        Vote.getGiveVote(params, getGiveVoteInDetailDone, getGiveVoteFailure)
     })
     /* ******************callback function*********************** */
     /* getActivity */
@@ -186,6 +166,26 @@ $(function () {
     }
 
     /* getGiveVote */
+    function getGiveVoteInDetailDone(data) {
+        logd("详情页投票成功")
+        logd('getGiveVote success');
+        console.log(data);
+        if(data.code=='000000'){
+            showTip(data.data.text);
+            // 成功// 刷新数据
+            var id = $("#giveVote").data("id")
+            var params={"id":id}
+            console.log(params)
+            Vote.getDetails(params, getDetailsDone, getDetailsFailure)
+        }else if(data.code=='000001'){
+            //已经投过
+            showTip(data.data.text);
+        }else if(data.code=='000002'){
+            //没有投票选手
+            showTip(data.data.text);
+        }
+    }
+
     function getGiveVoteDone(data) {
         logd("投票成功")
         logd('getGiveVote success');
@@ -197,18 +197,15 @@ $(function () {
             var params={"id":id}
             console.log(params)
             /* *
-            *判断刷新哪部分数据
+            * 判断刷新哪部分数据
             * 首页
             * 搜索结果
-            * 详情页
             * */
             if(!isSearch){
                 Vote.getContestants(null, getContestantsDone, getContestantsFailure)
             }else{
                 Vote.getContestants({"condition":id}, getContestantsDone, getContestantsFailure)
             }
-
-            Vote.getDetails(params, getDetailsDone, getDetailsFailure)
         }else if(data.code=='000001'){
             //已经投过
             showTip(data.data.text);
