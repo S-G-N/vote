@@ -20,43 +20,15 @@
 }
 @media screen and (min-width: 680px){
     html{
+        width: 680px;
         font-size:11.33px;
     }
 }
-@media screen and (min-width: 768px){
-    html{
-        font-size:12.8px;
-    }
+html{
+    text-align:center;
+    margin-left:auto;
+    margin-right:auto;
 }
-@media screen and (min-width: 1024px){
-    html{
-        font-size:17px;
-    }
-}
-@media screen and (min-width: 1280px){
-    html{
-        font-size: 21.33px;
-    }
-}
-
-
-@media screen and (min-width: 1366px){
-    html{
-        font-size:23px;
-    }
-}
-
-@media screen and (min-width: 1920px){
-    html{
-        font-size:32px;
-    }
-}
-@media screen and (min-width: 3840px){
-    html{
-        font-size:64px;
-    }
-}
-
 
 *{
     margin: 0;
@@ -66,7 +38,9 @@ ul,li{
     list-style: none;
 }
 body{
-    background: #db8c8c;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    /*background: #db8c8c;*/
 }
 .bannerImg{
     width:100%;
@@ -90,9 +64,10 @@ body{
     display: inline-block;
     color: #a90fff;
     width:2.5rem;
-    background: #000;
+    background:url(../images/time.png);
+    background-size:100% 100%;
     height: 2.5rem;
-    vertical-align: middle;
+    vertical-align: bottom;
 }
 .header .timeWrapper .time{
     display: inline-block;
@@ -148,7 +123,7 @@ body{
     width: 70%;
     padding-left:1rem;
     box-sizing: border-box;
-    border: 0.1rem solid #89919b;
+    border: 1px solid #6392b4;
 }
 .content .searchWrapper .searchBtn{
     display: inline-block;
@@ -157,12 +132,14 @@ body{
     background: #393a9b;
     text-align: center;
 }
-
+.content .searchWrapper .searchBtn span{
+    vertical-align: middle;
+}
 .content .searchWrapper .searchBtn .face{
     display: inline-block;
-    width:2rem;
-    height: 2rem;
-    background: #000;
+    width:2.5rem;
+    height: 2.5rem;
+    /* background: #000; */
     margin-right:0.2rem;
     vertical-align: middle;
 }
@@ -234,13 +211,17 @@ body{
     margin-right:0.2rem;
     vertical-align: middle;
 }
+.content .contestantWrapper .contestant .orderNum i,
+.content .contestantWrapper .contestant .voteBtn i{
+    vertical-align: middle;
+}
 
 .content .contestantWrapper .contestant .voteBtn{
     display: inline-block;
     width: 70%;
     height: 5rem;
     line-height:5rem;
-    background-color: #fff;
+     background-color: #fff; 
     -webkit-border-radius:1rem;
     -moz-border-radius:1rem;
     border-radius: 1rem;
@@ -270,7 +251,7 @@ body{
     display: inline-block;
     width:2rem;
     height: 2rem;
-    background: #000;
+    /* background: #000; */
     margin-right:0.2rem;
     vertical-align: middle;
 }
@@ -301,6 +282,7 @@ body{
     position: relative;
 }
 .content .detailWrapper .contestant .title{
+    text-align: left;
     height: 7rem;
     line-height: 7rem;
     padding: 0 4%;
@@ -309,7 +291,6 @@ body{
 .content .detailWrapper .contestant img{
     width: 92%;
     height:40rem;
-    margin-left:4%;
 
 }
 .content .detailWrapper .contestant .info{
@@ -353,10 +334,11 @@ body{
 table {
     width: 100%;
     color: #363637;
+    border:1px solid #dddddd;
 }
 
 table tr:nth-child(1){
-    color: #393a9b;
+    color: white;
 }
 
 table tr:nth-child(2n-1){
@@ -364,7 +346,7 @@ table tr:nth-child(2n-1){
 }
 
 table tr:nth-child(2n){
-    background-color: #fff;
+    background-color: #f3f3f3;
 }
 
 table td{
@@ -375,6 +357,9 @@ table td{
     border-bottom:1px solid #d4d4d5;
     border-left:1px solid #d4d4d5;
     font-size: 2rem;
+}
+table td span{
+    vertical-align: middle;
 }
 table tr th, table tr td {
     border-color:#d4d4d5;
@@ -394,6 +379,7 @@ td img{
     display: none;
     font-size: 2rem;
     color: #363637;
+    text-align: left;
 }
 
 .contentRule .ruleWrapper{
@@ -412,9 +398,10 @@ td img{
 /* *********** tab ************/
 
 .tabWrapper{
-    width:100%;
+    /*width:100%;*/
     height: 6rem;
     position: fixed;
+    left: 50%;
     bottom: 0;
 }
 
@@ -422,7 +409,7 @@ td img{
     display: inline-block;
     float: left;
     height: 100%;
-    width:33.333%;
+    width:33.3%;
     line-height:6rem;
     background: #ffc213;
     color: #fff;
@@ -432,6 +419,7 @@ td img{
     border-left: 0.2rem solid #fff0ff;
 
 }
+
 .tabWrapper li:nth-child(1){
     border-left:none;
     background: #393a9b;
@@ -440,11 +428,13 @@ td img{
     display: inline-block;
     width:2rem;
     height: 2rem;
-    background: #000;
+    /* background: #000; */
     margin-right:0.2rem;
     vertical-align: middle;
 }
-
+.tabWrapper li span{
+    vertical-align: middle;
+}
 .tip{
     display: none;
     position: fixed;

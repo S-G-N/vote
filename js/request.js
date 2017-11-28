@@ -9,9 +9,8 @@
 // var VOTEDdata_ERROR_UNKNOWN = -1;
 
 
-// var VOTE_URL_BASE = "http://111.200.54.178:8999/vote/vote1/";
-var VOTE_URL_BASE = "http://192.168.20.203:5555/";
-
+ var VOTE_URL_BASE = "http://111.200.54.178:8882/vote/vote1/";
+//	var VOTE_URL_BASE = "http://localhost:7773/vote/vote1/";
 
 /* public information */
 var logi = function(str) {
