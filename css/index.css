@@ -152,10 +152,11 @@ body{
 }
 
 .content .contestantWrapper .contestant{
+	border:1px solid red;
     position: relative;
     display: inline-block;
     width:48%;
-    height: 35rem;
+    height: auto;
     margin-bottom: 2rem;
     -webkit-background-size:100% 100%;
     background-size: 100% 100%;
@@ -163,8 +164,8 @@ body{
 
 .content .contestantWrapper .contestant .contestantPhoto{
     width: 100%;
-    height: 23rem;
-
+    /* height: 23rem; */
+     height: 150px; 
 }
 
 .content .contestantWrapper .contestant .order{
@@ -184,7 +185,7 @@ body{
 .content .contestantWrapper .contestant .voteWrapper{
     width: 100%;
     height: 12rem;
-    position: absolute;
+    position: relative;
     bottom: 0;
     background-color: #393a9b;
     color: #fff;
@@ -296,7 +297,7 @@ body{
 .content .detailWrapper .contestant .info{
     padding: 4%;
     font-size: 2.5rem;
-
+    text-align: left;
 }
 
 .content .detailWrapper .detailVoteRapper{
